@@ -1,11 +1,23 @@
 version: '3.8'
 
 services:
-
   mock-service:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    depends_on:
+      - external-mock
+    networks:
+      - monitoring
+
+  external-mock:
+    build:
+      context: .
+      dockerfile: Dockerfile.external
+    ports:
+      - "8081:8081"
     networks:
       - monitoring
 
@@ -46,7 +58,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     ports:
-      - "8081:8080"
+      - "8089:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro

@@ -7,6 +7,11 @@ scrape_configs:
     static_configs:
       - targets: ['mock-service:8080']
 
+  - job_name: 'external-mock'
+    metrics_path: '/metrics'           # ← порядок важен, перемести выше targets
+    static_configs:
+      - targets: ['external-mock:8081']
+
   - job_name: 'node'
     static_configs:
       - targets: ['node-exporter:9100']

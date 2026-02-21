@@ -1,0 +1,10 @@
+FROM eclipse-temurin:21-jre
+
+WORKDIR /app
+
+COPY target/mock-service-1.0-SNAPSHOT.jar app.jar
+
+EXPOSE 8081
+
+# Запуск НЕ через -jar, а через -cp + полное имя класса
+CMD ["java", "-cp", "app.jar", "ru.mock.external.ExternalApiMock"]
