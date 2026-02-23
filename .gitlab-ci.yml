@@ -1,0 +1,8 @@
+stages:
+  - test
+
+test-runner:
+  stage: test
+  script:
+    - echo "GitLab CI работает"
+    - docker --version
