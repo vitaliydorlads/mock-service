@@ -21,4 +21,4 @@ docker-build:
       fi
   rules:
     - exists:
-        - Dockerfile  
+        - Dockerfile
