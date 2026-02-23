@@ -11,4 +11,4 @@ docker-build:
   stage: build
   script:
     - docker info
-    - docker build -t mock-service:latest
+    - docker build -t mock-service:latest .
